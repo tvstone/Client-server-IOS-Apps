@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "50cb502bd6f906641ff6d85f14699b41--friend-pics-friend-pictures.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
