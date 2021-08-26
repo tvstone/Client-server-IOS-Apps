@@ -11,7 +11,6 @@ final class Session{
     static let shared = Session()
     
     var token: String = ""
-    var userId: String  = "7923218"
-
-    
+    var userId: String  = ""
+  
 }

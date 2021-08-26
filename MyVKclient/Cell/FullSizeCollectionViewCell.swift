@@ -29,6 +29,7 @@ class FullSizeCollectionViewCell: UICollectionViewCell {
     func config (image: UIImage){
 
         imageFullScreen.image = image
+        
     }
     
     override func awakeFromNib() {

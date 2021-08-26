@@ -9,23 +9,21 @@ import UIKit
 import Kingfisher
 import RealmSwift
 
-@IBDesignable
-class UniversalTableViewCell: UITableViewCell {
+
+final class UniversalTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var universalImage: UIImageView!
     @IBOutlet weak var backview: UIView!
     @IBOutlet weak var universalTitleLabel: UILabel!
-    
-    @IBInspectable var cornerRadius : CGFloat = 25 
 
-    @IBInspectable var shadowOffset :CGSize = CGSize(width: 5, height: 5)
-    @IBInspectable var shadowColor : UIColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
-    @IBInspectable var shadowRadius :CGFloat = 5
-    @IBInspectable var shadowOpacity :Float = 0.5
+    private var cornerRadius : CGFloat = 25
+    private var shadowOffset :CGSize = CGSize(width: 5, height: 5)
+    private var shadowColor : UIColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+    private var shadowRadius :CGFloat = 5
+    private var shadowOpacity :Float = 0.5
     
     var saveObject : Any?
-
     let realm = try! Realm()
     var itemsRealm : Results<RealmDatabase>!
 
@@ -33,11 +31,11 @@ class UniversalTableViewCell: UITableViewCell {
         
         backview.layer.cornerRadius = cornerRadius
         universalImage.layer.cornerRadius = cornerRadius
-        
         backview.layer.shadowColor = shadowColor.cgColor
         backview.layer.shadowOffset = shadowOffset
         backview.layer.shadowRadius = shadowRadius
         backview.layer.shadowOpacity = shadowOpacity
+        animateAvatar()
         
     }
     func clearCell(){
@@ -62,9 +60,7 @@ class UniversalTableViewCell: UITableViewCell {
 
         
     }
-    
-    
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         clearCell()
@@ -77,20 +73,11 @@ class UniversalTableViewCell: UITableViewCell {
       
     }
 
-//    func configureCell (title : String?, image : UIImage?) {
-//        universalTitleLabel.text = title
-//        universalImage.image = image
-//
-//    }
-
     func configureCell (user : User) {
         saveObject = user
-  //      itemsRealm = realm.objects(RealmDatabase.self)
-
         universalTitleLabel.text = user.nameFriend
-
-   //     universalImage.image = UIImage(named:user.photo_200_orig)
         universalImage.kf.setImage(with: URL(string: user.avaFriend))
+        animateAvatar()
 
     }
     

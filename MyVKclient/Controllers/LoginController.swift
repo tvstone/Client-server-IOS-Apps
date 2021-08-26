@@ -8,9 +8,7 @@
 import UIKit
 import WebKit
 
-class LoginController: UIViewController{
-
-
+final class LoginController: UIViewController{
 
     @IBOutlet weak var webView: WKWebView! {
         didSet {
@@ -36,13 +34,7 @@ class LoginController: UIViewController{
         let url = components.url!
         let request = URLRequest(url: url)
         webView.load(request)
-
- //       network.pingMyFriends()
-
-
-
     }
-
 }
 
 extension LoginController : WKNavigationDelegate {
@@ -50,14 +42,12 @@ extension LoginController : WKNavigationDelegate {
     func webView(
         _ webView: WKWebView,
         decidePolicyFor navigationResponse: WKNavigationResponse,
-        decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void
-    ) {
+        decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         guard navigationResponse.response.url?.path == "/blank.html",
               let fragment = navigationResponse.response.url?.fragment else {
             decisionHandler(.allow)
             return
         }
-
         let params = fragment
             .components(separatedBy: "&")
             .map { $0.components(separatedBy: "=") }
@@ -67,11 +57,10 @@ extension LoginController : WKNavigationDelegate {
                 let value = param[1]
                 dict[key] = value
                 return dict
-        }
+            }
 
-       Session.shared.token = params["access_token"] ?? ""
-       Session.shared.userId = params["user_id"] ?? ""
-
+        Session.shared.token = params["access_token"] ?? ""
+        Session.shared.userId = params["user_id"] ?? ""
         print("Token: " + Session.shared.token)
         print("User Id: " + Session.shared.userId)
         
@@ -79,5 +68,4 @@ extension LoginController : WKNavigationDelegate {
         present(vc, animated: true, completion: nil)
         decisionHandler(.cancel)
     }
-
 }

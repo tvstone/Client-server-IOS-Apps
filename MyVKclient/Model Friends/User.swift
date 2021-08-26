@@ -6,9 +6,10 @@
 //
 import UIKit
 
-struct  User : Hashable{
+struct  User : Hashable {
     var nameFriend : String
-//    var fotoArrayFriend : [UIImage]
-    var avaFriend : String 
+    var avaFriend : String
+    var fotos : [String]
+    var like : [String]
 }
 

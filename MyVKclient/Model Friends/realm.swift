@@ -5,20 +5,25 @@
 //  Created by Владислав Тихоненков on 15.08.2021.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 
-class RealmDatabase: RealmSwift.Object  {
-//    @objc dynamic var id = ""
-    @objc dynamic var friendName = String() //[String]()
-    @objc dynamic var avatar = String()
+final class RealmDatabase: Object  {
 
-    convenience init(friendName : String, avatar : String) {
+    @objc dynamic var idFriend = String()
+    @objc dynamic var friendName = String() 
+    @objc dynamic var avatar = String()
+    let fotos = List<Fotos>()
+
+
+    convenience init(friendName : String, avatar : String, idFriend : String) { 
         self.init()
+        self.idFriend = idFriend
         self.friendName = friendName
         self.avatar = avatar
-
     }
 
-
+override class func primaryKey () -> String?{
+    return "idFriend"
+}
 }

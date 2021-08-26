@@ -12,7 +12,7 @@ class FullSizeViewController: UIViewController {
     @IBOutlet var backViewFullScreen: UIView!
     
     let FullSizeIdentifer = "FullSizeIdentifer"
-    var friendsArray = [UIImage]()
+    var friendsArray = [String]()
     var indexPath : IndexPath!
 
     override func viewDidLoad() {
@@ -20,10 +20,9 @@ class FullSizeViewController: UIViewController {
         self.fullSizeViewCollection.delegate = self
         self.fullSizeViewCollection.dataSource = self
         fullSizeViewCollection.register(UINib(nibName: "FullSizeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: FullSizeIdentifer)
-    
         fullSizeViewCollection.performBatchUpdates(nil) { [self] result in
-            fullSizeViewCollection.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-                                                        }
+        fullSizeViewCollection.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        }
     }
 }
 
@@ -39,7 +38,9 @@ extension FullSizeViewController : UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FullSizeIdentifer, for: indexPath) as? FullSizeCollectionViewCell else {return UICollectionViewCell()}
-        cell.config(image: friendsArray[indexPath.item])
+        
+        cell.imageFullScreen.kf.setImage(with: URL(string: friendsArray[indexPath.item]))
+
         return cell
     }
 }

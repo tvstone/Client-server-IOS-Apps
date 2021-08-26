@@ -31,6 +31,7 @@
 		948A456226C9578F00CE3E4B /* realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948A456126C9578F00CE3E4B /* realm.swift */; };
 		948A456426C977DA00CE3E4B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948A456326C977DA00CE3E4B /* User.swift */; };
 		948A456726CC3E7000CE3E4B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 948A456626CC3E7000CE3E4B /* RealmSwift */; };
+		948A456926D4D09400CE3E4B /* Fotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948A456826D4D09400CE3E4B /* Fotos.swift */; };
 		949D6B8126C04511008F3E7F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949D6B8026C04510008F3E7F /* LoginController.swift */; };
 		949D6B8626C2EE59008F3E7F /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949D6B8526C2EE59008F3E7F /* NetworkLayer.swift */; };
 		949D6B8926C517CA008F3E7F /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 949D6B8826C517CA008F3E7F /* SwiftyJSON */; };
@@ -39,7 +40,6 @@
 		94AFE2B226886BF600CBF5DD /* MyFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AFE2B126886BF600CBF5DD /* MyFriendsViewController.swift */; };
 		94D649C72674BF0600100CEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D649C62674BF0600100CEF /* AppDelegate.swift */; };
 		94D649C92674BF0600100CEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D649C82674BF0600100CEF /* SceneDelegate.swift */; };
-		94D649CB2674BF0600100CEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D649CA2674BF0600100CEF /* LoginViewController.swift */; };
 		94D649CE2674BF0600100CEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94D649CC2674BF0600100CEF /* Main.storyboard */; };
 		94D649D02674BF0800100CEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94D649CF2674BF0800100CEF /* Assets.xcassets */; };
 		94D649D32674BF0800100CEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94D649D12674BF0800100CEF /* LaunchScreen.storyboard */; };
@@ -69,13 +69,13 @@
 		941EB02526BB16DC00B8BC8A /* MyFotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		948A456126C9578F00CE3E4B /* realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = realm.swift; sourceTree = "<group>"; };
 		948A456326C977DA00CE3E4B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		948A456826D4D09400CE3E4B /* Fotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fotos.swift; sourceTree = "<group>"; };
 		949D6B8026C04510008F3E7F /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		949D6B8526C2EE59008F3E7F /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		94AFE2B126886BF600CBF5DD /* MyFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsViewController.swift; sourceTree = "<group>"; };
 		94D649C32674BF0600100CEF /* MyVKclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVKclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94D649C62674BF0600100CEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94D649C82674BF0600100CEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		94D649CA2674BF0600100CEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		94D649CD2674BF0600100CEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94D649CF2674BF0800100CEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94D649D22674BF0800100CEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -105,6 +105,7 @@
 				941EB0062692079C00B8BC8A /* news.swift */,
 				948A456126C9578F00CE3E4B /* realm.swift */,
 				948A456326C977DA00CE3E4B /* User.swift */,
+				948A456826D4D09400CE3E4B /* Fotos.swift */,
 			);
 			path = "Model Friends";
 			sourceTree = "<group>";
@@ -113,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				94AFE2B126886BF600CBF5DD /* MyFriendsViewController.swift */,
-				94D649CA2674BF0600100CEF /* LoginViewController.swift */,
 				941EAFEA2688E1BD00B8BC8A /* MyTabBarController.swift */,
 				941EAFEE268904C000B8BC8A /* FotoController.swift */,
 				941EAFF42689193400B8BC8A /* AllGroupViewController.swift */,
@@ -289,12 +289,12 @@
 				941EB0072692079C00B8BC8A /* news.swift in Sources */,
 				941EB0102694D8FC00B8BC8A /* NewsTableCell.swift in Sources */,
 				941EB00B2694CD0D00B8BC8A /* NewsViewController.swift in Sources */,
-				94D649CB2674BF0600100CEF /* LoginViewController.swift in Sources */,
 				941EAFEB2688E1BD00B8BC8A /* MyTabBarController.swift in Sources */,
 				941EAFF22689053B00B8BC8A /* FotoCell.swift in Sources */,
 				941EAFE726889A4F00B8BC8A /* FriendsJson.swift in Sources */,
 				948A456426C977DA00CE3E4B /* User.swift in Sources */,
 				941EAFE92688E05300B8BC8A /* group.swift in Sources */,
+				948A456926D4D09400CE3E4B /* Fotos.swift in Sources */,
 				949D6B8126C04511008F3E7F /* LoginController.swift in Sources */,
 				94D649C72674BF0600100CEF /* AppDelegate.swift in Sources */,
 				941EAFF52689193400B8BC8A /* AllGroupViewController.swift in Sources */,

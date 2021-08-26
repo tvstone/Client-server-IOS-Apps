@@ -6,19 +6,23 @@
 //
 
 import UIKit
+import Kingfisher
 
 private let reuseIdentifier = "Cell"
 
 class FotoController: UICollectionViewController {
 
-    var fotoArray = [UIImage]()
+    var fotoArray = [String]()
+    var likeFoto = [String]()
+
     var FullSizeViewControllerID = "FullSizeViewControllerID"
     var countCells = 3
     var offSetCell = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(fotoArray)
+        print(likeFoto)
         self.collectionView.register(UINib(nibName: "FotoCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 
     }
@@ -29,24 +33,31 @@ class FotoController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
+
         return fotoArray.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FotoCell else { return UICollectionViewCell()}
-    
-       cell.config(image: fotoArray[indexPath.item])
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
+                                                            for: indexPath) as? FotoCell
+                                                            else { return UICollectionViewCell()}
+
+        cell.fotoImageView.kf.setImage(with: URL(string: fotoArray[indexPath.item] ))
+        cell.likeCounter.text = likeFoto[indexPath.item]
+      
+
 
         return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-          let vc = storyboard?.instantiateViewController(withIdentifier: FullSizeViewControllerID) as! FullSizeViewController
-          vc.friendsArray = fotoArray
-          vc.indexPath = indexPath
-          self.navigationController?.pushViewController(vc, animated: true)
-      }
+        let vc = storyboard?.instantiateViewController(withIdentifier: FullSizeViewControllerID) as! FullSizeViewController
+
+        vc.friendsArray = fotoArray
+        vc.indexPath = indexPath
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension FotoController : UICollectionViewDelegateFlowLayout {

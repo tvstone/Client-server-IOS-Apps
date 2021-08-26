@@ -6,47 +6,19 @@
 //
 
 import UIKit
-//import Alamofire
-import RealmSwift
-
 
 final class MyFriendsViewController: UIViewController {
 
     @IBOutlet weak var FriendsTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
 
-    let reuseIdentifireUniversalTableViewCell = "reuseIdentifireUniversalTableViewCell"
-    let segueFriendsToFoto = "fromFriendsToFoto"
-    let network = NetworkLayer()
-    var friendsArray = [User]()
-    var searchFriendsArray = [User]()
-    var searchFlag = false
-
-//    private let realm = try! Realm()
-//    var itemsRealm : Results<RealmDatabase>!
-//
-//
-//    func loadData() {
-//        itemsRealm = realm.objects(RealmDatabase.self)
-//
-//        let count = itemsRealm.count
-//
-//
-//        for i in 0 ..< count {
-//            let nameLoad = itemsRealm[i].friendName
-//            let ava = itemsRealm[i].avatar
-//
-////            friendsArray.append(nameLoad)
-//        }
-//
-//
-//    }
-
-
+    private let reuseIdentifireUniversalTableViewCell = "reuseIdentifireUniversalTableViewCell"
+    private let segueFriendsToFoto = "fromFriendsToFoto"
+    private var friendsArray = [User]()
+    private var searchFriendsArray = [User]()
+    private var searchFlag = false
 
     func myFriendsArray() -> [User] {
-
-
 
         if searchFlag {
             return searchFriendsArray
@@ -54,10 +26,7 @@ final class MyFriendsViewController: UIViewController {
         return friendsArray
     }
 
-
-
     func extractFirstSimbol () -> [String] {
-
         var resultArray = [String]()
 
         for item in myFriendsArray() {
@@ -66,10 +35,8 @@ final class MyFriendsViewController: UIViewController {
                 resultArray.append(nameLetter)
             }
         }
-       return resultArray
-        }
-
-
+        return resultArray
+    }
 
     func filteredOnCharacter (letter : String) -> [User]{
         var resultArray = [User]()
@@ -80,23 +47,24 @@ final class MyFriendsViewController: UIViewController {
                 resultArray.append(item)
             }
         }
-       return resultArray
+        return resultArray
     }
 
-
-    
     func config(userArray:[User]){
-        
         self.friendsArray = userArray
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        FriendsTableView.setEditing(false, animated: true)
+        FriendsTableView.reloadData()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
         navigationItem.title = "Мои друзья"
         FriendsTableView.reloadData()
-     
     }
- 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -104,16 +72,10 @@ final class MyFriendsViewController: UIViewController {
         
         FriendsTableView.delegate = self
         FriendsTableView.dataSource = self
-
-  //    setupFriend()
-
         searchBar.delegate = self
-
         friendsArray = friendsArray.sorted(by: {$0.nameFriend < $1.nameFriend})
-
+        navigationItem.title = "Идет загрузка данных ..."
         FriendsTableView.reloadData()
-
-
     }
 }
 
@@ -136,47 +98,44 @@ extension MyFriendsViewController : UISearchBarDelegate {
 
 
 extension MyFriendsViewController : UITableViewDelegate, UITableViewDataSource {
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
-
         return  extractFirstSimbol().count
     }
+
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     //   return resoultFriendsArray.count
         return filteredOnCharacter(letter: extractFirstSimbol()[section]).count
     }
-    
+
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifireUniversalTableViewCell, for: indexPath) as? UniversalTableViewCell else { return UITableViewCell()}
-        
         let arrayByLetterItems = filteredOnCharacter(letter: extractFirstSimbol()[indexPath.section])
 
         cell.configureCell(user: arrayByLetterItems[indexPath.row])
 
-
-
         return cell
-
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        
         return 60
     }
-    
+
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == segueFriendsToFoto,
             let dst = segue.destination as? FotoController,
             let user = sender as? User {
- //           dst.fotoArray = user.fotoArrayFriend
+            dst.fotoArray = user.fotos
+            dst.likeFoto = user.like
+
         }
     }
-
-
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -184,11 +143,10 @@ extension MyFriendsViewController : UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.cellForRow(at: indexPath) as? UniversalTableViewCell,
               let cellObject = cell.saveObject as? User
               else {return}
-        navigationItem.title = cellObject.nameFriend
     performSegue(withIdentifier: segueFriendsToFoto, sender: cellObject)
-    
     }
-    
+
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return extractFirstSimbol()[section].uppercased()
     }
