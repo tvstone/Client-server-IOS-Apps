@@ -31,13 +31,6 @@ class FotoCell: UICollectionViewCell {
 
     }
 
-
-
-
-    func setupCell(){
-
-    }
-
     func clearCell() {
 
         fotoImageView.image = nil
@@ -47,43 +40,25 @@ class FotoCell: UICollectionViewCell {
         clearCell()
     }
 
-
-
-
     override func awakeFromNib() {
         super.awakeFromNib()
-       setupCell()
-       clearCell()
+        clearCell()
         likeImageView.image = UIImage(systemName: "heart")
-
+        likeImageView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         likeCounter.text = String(likeCounterInt)
         likeCounter.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-
     }
 
     @IBAction func likeClikButtom(_ sender: UIButton) {
 
         if isLiked {
-
             likeImageView.image = UIImage(systemName: "heart")
-            likeCounterInt -= 1
-            likeCounter.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-
         }
         else {
-
             likeImageView.image = UIImage(systemName: "heart.fill")
-            likeCounterInt += 1
-            likeCounter.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             animateLike()
-
-
         }
-
-  //      likeCounter.text = String(likeCounterInt)
-
         isLiked = !isLiked
-
     }
 
 }

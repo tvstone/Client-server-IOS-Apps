@@ -7,11 +7,11 @@
 
 import UIKit
 
-class FullSizeViewController: UIViewController {
+final class FullSizeViewController: UIViewController {
     @IBOutlet weak var fullSizeViewCollection: UICollectionView!
     @IBOutlet var backViewFullScreen: UIView!
     
-    let FullSizeIdentifer = "FullSizeIdentifer"
+    private let FullSizeIdentifer = "FullSizeIdentifer"
     var friendsArray = [String]()
     var indexPath : IndexPath!
 
@@ -31,19 +31,20 @@ extension FullSizeViewController : UICollectionViewDelegate, UICollectionViewDat
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return friendsArray.count
     }
+
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FullSizeIdentifer, for: indexPath) as? FullSizeCollectionViewCell else {return UICollectionViewCell()}
-        
         cell.imageFullScreen.kf.setImage(with: URL(string: friendsArray[indexPath.item]))
-
         return cell
     }
 }
+
 
 extension FullSizeViewController : UICollectionViewDelegateFlowLayout {
     
