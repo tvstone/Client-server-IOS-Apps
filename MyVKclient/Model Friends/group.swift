@@ -12,3 +12,4 @@ struct groupFriends {
     var avaGroup : UIImage
     var variableDescriptionGroup : String?
 }
+

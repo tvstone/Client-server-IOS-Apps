@@ -6,25 +6,36 @@
 //
 
 import UIKit
+import Kingfisher
+import RealmSwift
 
-class UniversalTableViewCell: UITableViewCell {
+
+final class UniversalTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var universalImage: UIImageView!
     @IBOutlet weak var backview: UIView!
     @IBOutlet weak var universalTitleLabel: UILabel!
+
+    private var cornerRadius : CGFloat = 25
+    private var shadowOffset :CGSize = CGSize(width: 5, height: 5)
+    private var shadowColor : UIColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+    private var shadowRadius :CGFloat = 5
+    private var shadowOpacity :Float = 0.5
     
     var saveObject : Any?
-    
-    
+    let realm = try! Realm()
+    var itemsRealm : Results<RealmDatabase>!
+
     func setupCell(){
-        backview.layer.cornerRadius = 25
-        universalImage.layer.cornerRadius = 25
         
-        backview.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        backview.layer.shadowOffset = CGSize(width: 5, height: 5)
-        backview.layer.shadowRadius = 5
-        backview.layer.shadowOpacity = 0.5
+        backview.layer.cornerRadius = cornerRadius
+        universalImage.layer.cornerRadius = cornerRadius
+        backview.layer.shadowColor = shadowColor.cgColor
+        backview.layer.shadowOffset = shadowOffset
+        backview.layer.shadowRadius = shadowRadius
+        backview.layer.shadowOpacity = shadowOpacity
+        animateAvatar()
         
     }
     func clearCell(){
@@ -34,6 +45,22 @@ class UniversalTableViewCell: UITableViewCell {
         
     }
     
+    func animateAvatar() {
+        
+        let animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.stiffness = 100
+        animation.mass = 1
+        animation.duration = 1
+        animation.beginTime = CACurrentMediaTime()
+        animation.fillMode = CAMediaTimingFillMode.backwards
+        universalImage.layer.add(animation, forKey: nil)
+        backview.layer.add(animation, forKey: nil)
+
+        
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         clearCell()
@@ -46,16 +73,12 @@ class UniversalTableViewCell: UITableViewCell {
       
     }
 
-    func configureCell (title : String?, image : UIImage?) {
-        universalTitleLabel.text = title
-        universalImage.image = image
-        
-    }
-
-    func configureCell (user : friend) {
+    func configureCell (user : User) {
         saveObject = user
         universalTitleLabel.text = user.nameFriend
-        universalImage.image = user.avaFriend
+        universalImage.kf.setImage(with: URL(string: user.avaFriend))
+        animateAvatar()
+
     }
     
     func configureCell (group : groupFriends) {
@@ -63,9 +86,6 @@ class UniversalTableViewCell: UITableViewCell {
         universalTitleLabel.text = group.titleGroup
         universalImage.image = group.avaGroup
     }
-    
-    
-    
     
     
 }

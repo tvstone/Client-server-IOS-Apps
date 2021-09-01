@@ -6,75 +6,67 @@
 //
 
 import UIKit
+import RealmSwift
+import Kingfisher
 
-class MyTabBarController: UITabBarController {
+final class MyTabBarController: UITabBarController {
 
-    func  setupFriend() -> [friend] {
-        var itogArray = [friend]()
-   
-        
-        let firstFotoArray = [UIImage(named: "1_1")!, UIImage(named: "1_2")!, UIImage(named: "1_3")!, UIImage(named: "1_4")!, UIImage(named: "1_5")!]
-        let firstFriend = friend(nameFriend: "Сергей Иванов", fotoArrayFriend: firstFotoArray, avaFriend: UIImage(named: "1_1")!)
-        itogArray.append(firstFriend)
-    
-        let secondFotoArray = [UIImage(named: "2_1")!, UIImage(named: "2_2")!, UIImage(named: "2_3")!, UIImage(named: "2_4")!, UIImage(named: "2_5")!]
-        let secondFriend = friend(nameFriend: "Андрей Тихонов", fotoArrayFriend: secondFotoArray, avaFriend: UIImage(named: "2_1")!)
-        itogArray.append(secondFriend)
-        
-        let thirdFotoArray = [UIImage(named: "3_1")!, UIImage(named: "3_2")!, UIImage(named: "3_3")!, UIImage(named: "3_4")!, UIImage(named: "3_5")!]
-        let thirdFriend = friend(nameFriend: "Антон Гришин", fotoArrayFriend: thirdFotoArray, avaFriend: UIImage(named: "3_1")!)
-        itogArray.append(thirdFriend)
-        
-        let fourthFotoArray = [UIImage(named: "4_1")!, UIImage(named: "4_2")!, UIImage(named: "4_3")!, UIImage(named: "4_4")!, UIImage(named: "4_5")!]
-        let fourthFriend = friend(nameFriend: "Иван Петров", fotoArrayFriend: fourthFotoArray, avaFriend: UIImage(named: "4_1")!)
-        itogArray.append(fourthFriend)
-        
-        let fifthFotoArray = [UIImage(named: "5_1")!, UIImage(named: "5_2")!, UIImage(named: "5_3")!, UIImage(named: "5_4")!, UIImage(named: "5_5")!]
-        let fifthFriend = friend(nameFriend: "Константин Серов", fotoArrayFriend: fifthFotoArray, avaFriend: UIImage(named: "5_1")!)
-        itogArray.append(fifthFriend)
-        
-        
+    private let network = NetworkLayer()
+
+    private let realm = try! Realm(configuration: Realm.Configuration(deleteRealmIfMigrationNeeded: true))
+    private var itemsRealm : Results<RealmDatabase>!
+    private var fotosRealm : Results<Fotos>!
+    private var arrayFriend = [String]()
+    private var likes = [String]()
+
+
+    func  setupFriend() -> [User] {
+        var itogArray = [User]()
+        itemsRealm = realm.objects(RealmDatabase.self)
+        fotosRealm = realm.objects(Fotos.self)
+        let count = itemsRealm.count
+        for i in 0 ..< count {
+
+            let name = itemsRealm[i].friendName
+            let ava = itemsRealm[i].avatar
+
+            arrayFriend = [String]()
+            likes = [String]()
+
+            for j in 0 ..< fotosRealm.count{
+                let fot = fotosRealm [j].allFotosOfFriend
+                let like = fotosRealm[j].like
+                if itemsRealm[i].idFriend == fotosRealm[j].idFriend {
+          //          let like = fotosRealm[j].like
+                    arrayFriend.append(fot)
+                    likes.append(like)
+                }
+            }
+            let friend = User(nameFriend: name, avaFriend: ava, fotos: arrayFriend, like: likes)
+            itogArray.append(friend)
+        }
+        itogArray = Array(Set(itogArray))
+
+                try! realm.write({
+                    realm.deleteAll()
+                    realm.refresh()
+                })
         return itogArray
     }
-    
-    
-//    func  setupGroup() -> [groupFriends] {
-//        var itogArray = [groupFriends]()
-//   
-//        
-//        
-//        let firstGroup = groupFriends(titleGroup: "Близкие друзья", avaGroup: UIImage(named: "1_3")!, variableDescriptionGroup: "Одноклассники")
-//        itogArray.append(firstGroup)
-//    
-//        let secondGroup = groupFriends(titleGroup: "Товарищи", avaGroup: UIImage(named: "1_4")!, variableDescriptionGroup: "Одноклассники")
-//        itogArray.append(secondGroup)
-//        
-//        return itogArray
-//    }
-//    
-    
-    
-    
-    
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        network.pingMyFriends()
+        print(realm.configuration.fileURL)
+
+
         guard let myFriendNavigationController = self.viewControllers?.first as? UINavigationController,
               let friendViewController = myFriendNavigationController.viewControllers.first as? MyFriendsViewController
-              else {return}
-
+        else {return}
         friendViewController.config(userArray: setupFriend())
-      
-        
- //       guard let groupNavigationController = self.viewControllers?[1] as? UINavigationController,
- //             let groupViewController = groupNavigationController.viewControllers.first as? groupViewController
- //             else {return}
         
     }
-    
-
-  
-
 }
+
