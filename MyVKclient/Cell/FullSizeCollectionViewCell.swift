@@ -9,10 +9,8 @@ import UIKit
 
 class FullSizeCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var backViewFullScrin: UIView!
     @IBOutlet weak var imageFullScreen: UIImageView!
-    @IBOutlet weak var backViewCell: UIView!
-    
+
     func setupCell(){
 
     }

@@ -14,11 +14,15 @@ final class MyFriendsViewController: UIViewController {
 
     private let reuseIdentifireUniversalTableViewCell = "reuseIdentifireUniversalTableViewCell"
     private let segueFriendsToFoto = "fromFriendsToFoto"
-    private var friendsArray = [User]()
-    private var searchFriendsArray = [User]()
+    private let myFotoCellId = "myFotoCellId"
+    private var friendsArray = [Friend]()
+    private var searchFriendsArray = [Friend]()
     private var searchFlag = false
+    private let tabBar = MyTabBarController()
+    private let network = NetworkFriends()
 
-    func myFriendsArray() -> [User] {
+
+    func myFriendsArray() -> [Friend] {
 
         if searchFlag {
             return searchFriendsArray
@@ -38,8 +42,8 @@ final class MyFriendsViewController: UIViewController {
         return resultArray
     }
 
-    func filteredOnCharacter (letter : String) -> [User]{
-        var resultArray = [User]()
+    func filteredOnCharacter (letter : String) -> [Friend]{
+        var resultArray = [Friend]()
         
         for item in myFriendsArray() {
             let nameLetter = String(item.nameFriend.prefix(1))
@@ -50,19 +54,18 @@ final class MyFriendsViewController: UIViewController {
         return resultArray
     }
 
-    func config(userArray:[User]){
-        self.friendsArray = userArray
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        FriendsTableView.setEditing(false, animated: true)
         FriendsTableView.reloadData()
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
         navigationItem.title = "Мои друзья"
+        friendsArray = tabBar.setupFriend()
+        friendsArray = friendsArray.sorted(by: {$0.nameFriend < $1.nameFriend})
         FriendsTableView.reloadData()
+
     }
 
     override func viewDidLoad() {
@@ -73,9 +76,8 @@ final class MyFriendsViewController: UIViewController {
         FriendsTableView.delegate = self
         FriendsTableView.dataSource = self
         searchBar.delegate = self
-        friendsArray = friendsArray.sorted(by: {$0.nameFriend < $1.nameFriend})
         navigationItem.title = "Идет загрузка данных ..."
-        FriendsTableView.reloadData()
+
     }
 }
 
@@ -129,21 +131,20 @@ extension MyFriendsViewController : UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == segueFriendsToFoto,
-            let dst = segue.destination as? FotoController,
-            let user = sender as? User {
+           let dst = segue.destination as? FotoController,
+           let user = sender as? Friend {
             dst.fotoArray = user.fotos
             dst.likeFoto = user.like
-
+            
         }
     }
-
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
 
         guard let cell = tableView.cellForRow(at: indexPath) as? UniversalTableViewCell,
-              let cellObject = cell.saveObject as? User
-              else {return}
-    performSegue(withIdentifier: segueFriendsToFoto, sender: cellObject)
+              let cellObject = cell.saveObject as? Friend
+        else {return}
+        performSegue(withIdentifier: segueFriendsToFoto, sender: cellObject)
     }
 
 
