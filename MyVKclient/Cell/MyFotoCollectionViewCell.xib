@@ -30,7 +30,7 @@
             </constraints>
             <size key="customSize" width="227" height="221"/>
             <connections>
-                <outlet property="fotoView" destination="s5t-5u-Ete" id="Dlt-kG-D7l"/>
+                <outlet property="myFotoView" destination="s5t-5u-Ete" id="Dlt-kG-D7l"/>
             </connections>
             <point key="canvasLocation" x="258.69565217391306" y="163.72767857142856"/>
         </collectionViewCell>

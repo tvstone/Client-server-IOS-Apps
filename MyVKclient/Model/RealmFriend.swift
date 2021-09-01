@@ -8,12 +8,12 @@
 import Foundation
 import RealmSwift
 
-final class RealmDatabase: Object  {
+final class RealmFriend: Object  {
 
     @objc dynamic var idFriend = String()
     @objc dynamic var friendName = String() 
     @objc dynamic var avatar = String()
-    let fotos = List<Fotos>()
+  //  let fotos = List<RealmFotos>()
 
 
     convenience init(friendName : String, avatar : String, idFriend : String) { 

@@ -25,7 +25,7 @@ final class UniversalTableViewCell: UITableViewCell {
     
     var saveObject : Any?
     let realm = try! Realm()
-    var itemsRealm : Results<RealmDatabase>!
+    var itemsRealm : Results<RealmFriend>!
 
     func setupCell(){
         
@@ -57,8 +57,7 @@ final class UniversalTableViewCell: UITableViewCell {
         animation.fillMode = CAMediaTimingFillMode.backwards
         universalImage.layer.add(animation, forKey: nil)
         backview.layer.add(animation, forKey: nil)
-
-        
+       
     }
 
     override func prepareForReuse() {
@@ -73,7 +72,7 @@ final class UniversalTableViewCell: UITableViewCell {
       
     }
 
-    func configureCell (user : User) {
+    func configureCell (user : Friend) {
         saveObject = user
         universalTitleLabel.text = user.nameFriend
         universalImage.kf.setImage(with: URL(string: user.avaFriend))
@@ -81,10 +80,11 @@ final class UniversalTableViewCell: UITableViewCell {
 
     }
     
-    func configureCell (group : groupFriends) {
+    func configureCell (group : Group) {
         saveObject = group
         universalTitleLabel.text = group.titleGroup
-        universalImage.image = group.avaGroup
+        universalImage.kf.setImage(with: URL(string: group.avaGroup))
+        animateAvatar()
     }
     
     

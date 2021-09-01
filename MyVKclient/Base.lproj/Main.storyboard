@@ -25,8 +25,8 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Загрузка  ..." textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7K-jB-4Ek">
-                                <rect key="frame" x="154" y="642" width="107.5" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Загрузка  ..." textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7K-jB-4Ek">
+                                <rect key="frame" x="153.5" y="543" width="107.5" height="24"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.05509173388" green="0.064956118930000001" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -37,11 +37,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="lwS-fF-vTV" firstAttribute="bottom" secondItem="RkP-W2-a4h" secondAttribute="bottom" id="6si-WQ-lCx"/>
-                            <constraint firstItem="t7K-jB-4Ek" firstAttribute="centerY" secondItem="0uB-3l-Auy" secondAttribute="centerY" id="MWF-1s-DWK"/>
+                            <constraint firstItem="t7K-jB-4Ek" firstAttribute="centerX" secondItem="RkP-W2-a4h" secondAttribute="centerX" id="WCm-Ue-ZmA"/>
                             <constraint firstItem="RkP-W2-a4h" firstAttribute="top" secondItem="lwS-fF-vTV" secondAttribute="top" id="cls-rK-c5X"/>
                             <constraint firstItem="lwS-fF-vTV" firstAttribute="trailing" secondItem="RkP-W2-a4h" secondAttribute="trailing" id="fNe-dQ-BLz"/>
                             <constraint firstItem="RkP-W2-a4h" firstAttribute="leading" secondItem="lwS-fF-vTV" secondAttribute="leading" id="ngX-mK-Dkb"/>
-                            <constraint firstItem="t7K-jB-4Ek" firstAttribute="centerX" secondItem="0uB-3l-Auy" secondAttribute="centerX" id="zvC-53-xYm"/>
+                            <constraint firstItem="RkP-W2-a4h" firstAttribute="baseline" secondItem="t7K-jB-4Ek" secondAttribute="firstBaseline" constant="300" id="yrO-iT-wlr"/>
                         </constraints>
                     </view>
                     <connections>
@@ -73,7 +73,7 @@
             </objects>
             <point key="canvasLocation" x="-5210" y="-1554"/>
         </scene>
-        <!--Мои группы-->
+        <!--Любимые группы-->
         <scene sceneID="u7m-mc-Ros">
             <objects>
                 <tableViewController id="0S5-0C-WsQ" customClass="MyGroupController" customModule="MyVKclient" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,23 +82,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.82414071570000003" green="0.96620899439999997" blue="0.94957906120000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.2160676034" green="0.06041329812" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OwL-dw-5Ec">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OwL-dw-5Ec" id="nC0-tE-ICF">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.82414071570000003" green="0.96620899439999997" blue="0.94957906120000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="0S5-0C-WsQ" id="5Zx-ie-oZ9"/>
                             <outlet property="delegate" destination="0S5-0C-WsQ" id="VuN-ZS-60R"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Мои группы" id="jDw-wn-1qI">
+                    <navigationItem key="navigationItem" title="Любимые группы" id="jDw-wn-1qI">
                         <barButtonItem key="backBarButtonItem" title="&lt;&lt;&lt;" id="PYL-dN-IYc"/>
                         <barButtonItem key="rightBarButtonItem" title="&lt;&lt;&lt;" image="person.3.fill" catalog="system" style="done" id="IIR-wS-WWg">
                             <color key="tintColor" red="0.05509173388" green="0.064956118930000001" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -112,7 +101,7 @@
             </objects>
             <point key="canvasLocation" x="-3413.04347826087" y="-1205.3571428571429"/>
         </scene>
-        <!--Все группы-->
+        <!--Все мои группы-->
         <scene sceneID="ZPe-b7-TWR">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="uQP-dT-T0N" customClass="AllGroupViewController" customModule="MyVKclient" customModuleProvider="target" sceneMemberID="viewController">
@@ -121,23 +110,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.82414071570000003" green="0.96620899439999997" blue="0.94957906120000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.2160676034" green="0.06041329812" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bx0-SF-uEb">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bx0-SF-uEb" id="Nid-Oc-R5Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.82414071570000003" green="0.96620899439999997" blue="0.94957906120000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="uQP-dT-T0N" id="FDX-cN-ACh"/>
                             <outlet property="delegate" destination="uQP-dT-T0N" id="HON-M0-3ht"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Все группы" largeTitleDisplayMode="never" id="ESk-b5-7WA"/>
+                    <navigationItem key="navigationItem" title="Все мои группы" largeTitleDisplayMode="never" id="ESk-b5-7WA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2t-AA-WBV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,8 +158,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bXm-cq-PiM">
-                                <rect key="frame" x="0.0" y="244" width="414" height="569"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bXm-cq-PiM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="XLq-cz-jwC">
                                     <size key="itemSize" width="128" height="128"/>
@@ -191,49 +169,21 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prof" translatesAutoresizingMaskIntoConstraints="NO" id="X0e-2D-kez">
-                                <rect key="frame" x="2" y="62" width="180" height="180"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="X0e-2D-kez" secondAttribute="height" multiplier="1:1" id="I4R-Jf-QFX"/>
-                                    <constraint firstAttribute="width" constant="180" id="sAH-oz-Yq3"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Брэд Пит" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHc-d9-OuK">
-                                <rect key="frame" x="297.5" y="84" width="106.5" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcT-oE-LzQ">
-                                <rect key="frame" x="373" y="119" width="31" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QlY-Wo-w7m"/>
                         <color key="backgroundColor" red="0.83452059860000005" green="0.94966541230000001" blue="0.96620899439999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.82414071570000003" green="0.96620899439999997" blue="0.94957906120000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="X0e-2D-kez" firstAttribute="leading" secondItem="QlY-Wo-w7m" secondAttribute="leading" constant="2" id="65H-Fa-Poq"/>
-                            <constraint firstItem="bXm-cq-PiM" firstAttribute="top" secondItem="X0e-2D-kez" secondAttribute="bottom" constant="2" id="6SG-1S-jEZ"/>
                             <constraint firstItem="bXm-cq-PiM" firstAttribute="leading" secondItem="QlY-Wo-w7m" secondAttribute="leading" id="CYm-L9-vZS"/>
-                            <constraint firstItem="QlY-Wo-w7m" firstAttribute="trailing" secondItem="xHc-d9-OuK" secondAttribute="trailing" constant="10" id="EXu-7p-wvJ"/>
-                            <constraint firstItem="FcT-oE-LzQ" firstAttribute="top" secondItem="xHc-d9-OuK" secondAttribute="bottom" constant="5" id="Edl-EU-QCd"/>
-                            <constraint firstItem="bXm-cq-PiM" firstAttribute="top" secondItem="QlY-Wo-w7m" secondAttribute="top" constant="200" id="OBI-f6-7HK"/>
-                            <constraint firstItem="xHc-d9-OuK" firstAttribute="top" secondItem="QlY-Wo-w7m" secondAttribute="top" constant="40" id="OS7-WL-3t0"/>
-                            <constraint firstItem="QlY-Wo-w7m" firstAttribute="trailing" secondItem="FcT-oE-LzQ" secondAttribute="trailing" constant="10" id="Ydr-Ue-wiX"/>
+                            <constraint firstItem="bXm-cq-PiM" firstAttribute="top" secondItem="QlY-Wo-w7m" secondAttribute="top" id="OBI-f6-7HK"/>
                             <constraint firstItem="QlY-Wo-w7m" firstAttribute="bottom" secondItem="bXm-cq-PiM" secondAttribute="bottom" id="q8Y-yf-gd3"/>
                             <constraint firstItem="QlY-Wo-w7m" firstAttribute="trailing" secondItem="bXm-cq-PiM" secondAttribute="trailing" id="sGg-a5-DLN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Профиль" image="person.fill" catalog="system" selectedImage="person.fill" id="Utd-Lp-hz8"/>
+                    <tabBarItem key="tabBarItem" title="Мои фото" image="person.fill" catalog="system" selectedImage="person.fill" id="Utd-Lp-hz8"/>
                     <navigationItem key="navigationItem" id="Grx-TL-dJ8"/>
                     <connections>
-                        <outlet property="myAvatar" destination="X0e-2D-kez" id="rid-cf-UGR"/>
                         <outlet property="myGallary" destination="bXm-cq-PiM" id="8WP-Mg-OME"/>
-                        <outlet property="myName" destination="xHc-d9-OuK" id="az9-Tt-Gle"/>
-                        <outlet property="myUserId" destination="FcT-oE-LzQ" id="uEy-QD-DGz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDc-ed-ScY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -309,7 +259,7 @@
         <!--Мои друзья-->
         <scene sceneID="FFv-Va-qks">
             <objects>
-                <viewController title="Мои друзья" modalPresentationStyle="fullScreen" id="hN6-M0-avv" customClass="MyFriendsViewController" customModule="MyVKclient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myFriends" title="Мои друзья" modalPresentationStyle="fullScreen" id="hN6-M0-avv" customClass="MyFriendsViewController" customModule="MyVKclient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mPw-2L-UtE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -424,7 +374,6 @@
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="prof" width="1920" height="1440"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

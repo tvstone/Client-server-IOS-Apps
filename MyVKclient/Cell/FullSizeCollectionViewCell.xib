@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,41 +16,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="260" height="252"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1t-I3-jIH">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mrL-gM-ViU">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="252"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q6Z-QM-qAS">
-                                <rect key="frame" x="0.0" y="0.0" width="260" height="252"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Q6Z-QM-qAS" firstAttribute="leading" secondItem="V1t-I3-jIH" secondAttribute="leading" id="4CZ-rs-isF"/>
-                            <constraint firstAttribute="trailing" secondItem="Q6Z-QM-qAS" secondAttribute="trailing" id="Pvr-KA-kZH"/>
-                            <constraint firstAttribute="bottom" secondItem="Q6Z-QM-qAS" secondAttribute="bottom" id="ZLz-d9-lB9"/>
-                            <constraint firstItem="Q6Z-QM-qAS" firstAttribute="top" secondItem="V1t-I3-jIH" secondAttribute="top" id="zu1-vx-X5x"/>
-                        </constraints>
-                    </view>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="V1t-I3-jIH" secondAttribute="bottom" id="2da-5i-908"/>
-                <constraint firstItem="V1t-I3-jIH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8ER-TB-qCD"/>
-                <constraint firstAttribute="trailing" secondItem="V1t-I3-jIH" secondAttribute="trailing" id="YPe-L0-xDJ"/>
-                <constraint firstItem="V1t-I3-jIH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="elm-MC-Epv"/>
+                <constraint firstAttribute="bottom" secondItem="mrL-gM-ViU" secondAttribute="bottom" id="7LK-oY-Z9z"/>
+                <constraint firstAttribute="trailing" secondItem="mrL-gM-ViU" secondAttribute="trailing" id="JDR-jB-lFk"/>
+                <constraint firstItem="mrL-gM-ViU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Yoa-gk-SED"/>
+                <constraint firstItem="mrL-gM-ViU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cTs-kP-4ye"/>
             </constraints>
             <size key="customSize" width="260" height="252"/>
             <connections>
-                <outlet property="backViewFullScrin" destination="V1t-I3-jIH" id="yc6-0r-ihz"/>
-                <outlet property="imageFullScreen" destination="Q6Z-QM-qAS" id="z1J-Pl-Z2i"/>
+                <outlet property="imageFullScreen" destination="mrL-gM-ViU" id="zym-LX-648"/>
             </connections>
             <point key="canvasLocation" x="282.60869565217394" y="174.10714285714286"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

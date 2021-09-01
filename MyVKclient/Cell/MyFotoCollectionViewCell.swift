@@ -9,12 +9,28 @@ import UIKit
 
 class MyFotoCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var fotoView: UIImageView!
-    
+    @IBOutlet weak var myFotoView: UIImageView!
+
+    func setupCell(){
+
+    }
+
+    func clearCell() {
+
+        myFotoView.image = nil
+    }
+
+
+    override func prepareForReuse() {
+        clearCell()
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        fotoView.image = nil
-        // Initialization code
+        clearCell()
+        setupCell()
+
+
     }
 
 }
